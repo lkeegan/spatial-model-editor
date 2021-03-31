@@ -134,6 +134,7 @@ target_link_libraries(
   PUBLIC opencv_core
          opencv_imgproc
          spdlog::spdlog
+         Qt5::Svg
          Qt5::Gui
          Qt5::Core)
 

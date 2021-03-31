@@ -30,5 +30,6 @@
         <file>geometry/gt19.png</file>
         <file>geometry/gt20.png</file>
         <file>geometry/potato_alpha_channel.png</file>
+        <file>geometry/icon.svg</file>
     </qresource>
 </RCC>

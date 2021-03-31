@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13...3.19)
+cmake_minimum_required(VERSION 3.13...3.20)
 message(STATUS "CMake version ${CMAKE_VERSION}")
 
 # version number here is embedded in compiled executable
@@ -25,6 +25,7 @@ find_package(
   COMPONENTS Core
              Gui
              Widgets
+             Svg
   REQUIRED)
 get_target_property(
   Qt5Core_location

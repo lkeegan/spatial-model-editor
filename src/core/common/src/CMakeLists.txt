@@ -3,6 +3,7 @@ configure_file("version.cpp.in"
 target_sources(
   core
   PRIVATE logger.cpp
+          svg.cpp
           symbolic.cpp
           tiff.cpp
           utils.cpp
@@ -11,6 +12,7 @@ if(BUILD_TESTING)
   target_sources(
     core_tests
     PUBLIC logger_t.cpp
+           svg_t.cpp
            symbolic_t.cpp
            tiff_t.cpp
            utils_t.cpp)

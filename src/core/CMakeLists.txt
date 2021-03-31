@@ -117,6 +117,8 @@ if(SME_WITH_OPENMP)
   target_compile_definitions(core PUBLIC SPATIAL_MODEL_EDITOR_WITH_OPENMP)
   target_link_libraries(core PRIVATE OpenMP::OpenMP_CXX)
 endif()
+target_include_directories(
+  core SYSTEM PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../../ext/nanosvg/src)
 target_include_directories(core SYSTEM PRIVATE ${SYMENGINE_INCLUDE_DIRS})
 # set Logger level
 target_compile_definitions(
@@ -134,7 +136,6 @@ target_link_libraries(
   PUBLIC opencv_core
          opencv_imgproc
          spdlog::spdlog
-         Qt5::Svg
          Qt5::Gui
          Qt5::Core)
 

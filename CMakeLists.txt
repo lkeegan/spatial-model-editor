@@ -25,7 +25,6 @@ find_package(
   COMPONENTS Core
              Gui
              Widgets
-             Svg
   REQUIRED)
 get_target_property(
   Qt5Core_location

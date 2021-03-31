@@ -78,6 +78,8 @@ Spatial Model Editor makes use of the following open source libraries:
 
 - [Catch2](https://github.com/catchorg/Catch2) - license: [BSL-1.0](https://github.com/catchorg/Catch2/blob/master/LICENSE.txt)
 
+- [Nano SVG](https://github.com/memononen/nanosvg) - license: [zlib](https://github.com/memononen/nanosvg/blob/master/LICENSE.txt)
+
 ## Licensing Note
 
 The source code in this repository is released under the MIT license, which is a permissive

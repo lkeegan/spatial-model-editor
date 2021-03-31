@@ -4,3 +4,6 @@
 [submodule "ext/CLI11"]
 	path = ext/CLI11
 	url = git://github.com/CLIUtils/CLI11.git
+[submodule "ext/nanosvg"]
+	path = ext/nanosvg
+	url = git://github.com/memononen/nanosvg.git

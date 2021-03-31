@@ -6,32 +6,31 @@
 #include <vector>
 
 #include "catch_wrapper.hpp"
-#include "tiff.hpp"
+#include "svg.hpp"
 #include "utils.hpp"
 
 using namespace sme;
 
-SCENARIO("TiffReader", "[core/common/tiff][core/common][core][tiff]") {
-  GIVEN("1 16bit grayscale tiff") {
+SCENARIO("SvgReader", "[core/common/svg][core/common][core][svg]") {
+GIVEN("nonexistent file"){
+    utils::SvgReader svgReader("idontexist.blah");
+    REQUIRE(svgReader.valid() == false);
+}
+GIVEN("invalid svg file"){
     QFile::remove("tmp.tif");
     QFile::copy(":/test/16bit_gray.tif", "tmp.tif");
-    utils::TiffReader tiffReader(
-        QDir::current().filePath("tmp.tif").toStdString());
-    REQUIRE(tiffReader.size() == 1);
-    REQUIRE(tiffReader.getErrorMessage().isEmpty());
-    auto img = tiffReader.getImage();
-    REQUIRE(img.size() == QSize(100, 100));
-    REQUIRE(img.pixel(0, 0) == 0xff000000);
-  }
-  GIVEN("3x 8bit grayscale tiff") {
-    QFile::remove("tmp2.tif");
-    QFile::copy(":/test/8bit_gray_3x.tif", "tmp2.tif");
-    utils::TiffReader tiffReader(
-        QDir::current().filePath("tmp2.tif").toStdString());
-    REQUIRE(tiffReader.size() == 3);
-    REQUIRE(tiffReader.getErrorMessage().isEmpty());
-    auto img = tiffReader.getImage(0);
-    REQUIRE(img.size() == QSize(5, 5));
-    REQUIRE(img.pixel(0, 0) == 0xff000000);
+    utils::SvgReader svgReader("tmp.tif");
+    REQUIRE(svgReader.valid() == false);
+}
+  GIVEN("valid svg file") {
+    QFile::remove("tmp.svg");
+    QFile::copy(":/test/geometry/icon.svg", "tmp.svg");
+    utils::SvgReader svgReader(
+        QDir::current().filePath("tmp.svg").toStdString());
+    REQUIRE(svgReader.valid() == true);
+    QSize s0{320, 320};
+    auto img = svgReader.getImage(s0);
+    REQUIRE(img.size() == s0);
+    //REQUIRE(img.pixel(0, 0) == 0xff000000);
   }
 }

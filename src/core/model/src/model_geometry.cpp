@@ -296,8 +296,11 @@ void ModelGeometry::setPixelWidth(double width) {
   pixelWidth = width;
   // update pixelWidth for each compartment
   for (const auto &id : modelCompartments->getIds()) {
+    SPDLOG_ERROR("{}", id.toStdString());
     if (auto *compartment = modelCompartments->getCompartment(id);
         compartment != nullptr) {
+      SPDLOG_ERROR("{:x}", reinterpret_cast<std::size_t>(static_cast<const void*>(compartment)));
+      SPDLOG_ERROR("  -> {}", width);
       compartment->setPixelWidth(width);
     }
   }

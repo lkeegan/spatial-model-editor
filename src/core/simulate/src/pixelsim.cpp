@@ -244,6 +244,7 @@ PixelSim::PixelSim(
     // add compartments
     for (std::size_t compIndex = 0; compIndex < compartmentIds.size();
          ++compIndex) {
+      SPDLOG_ERROR("COMP: {}", compartmentIds[compIndex]);
       const auto &speciesIds{compartmentSpeciesIds[compIndex]};
       const auto *compartment{doc.getCompartments().getCompartment(
           compartmentIds[compIndex].c_str())};

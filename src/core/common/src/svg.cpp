@@ -41,7 +41,7 @@ QImage SvgReader::getImage(const QSize &size) const {
     for (int y = 0; y < size.height(); ++y) {
       for (int x = 0; x < size.width(); ++x) {
         int i = 4 * (x + y * size.width());
-        img.setPixel(x, y, qRgba(buf[i], buf[i+1], buf[i+2], buf[i+3]));
+        img.setPixel(x, y, qRgba(buf[i], buf[i+1], buf[i+2], 255));
         SPDLOG_INFO("{:x}", img.pixel(x, y));
       }
     }

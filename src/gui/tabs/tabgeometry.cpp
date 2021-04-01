@@ -79,6 +79,7 @@ void TabGeometry::loadModelData(const QString &selection) {
     ui->btnChangeCompartment->setEnabled(true);
   }
   lblGeometry->setImage(model.getGeometry().getImage());
+  lblGeometry->getImage().save("TT.png");
   enableTabs();
   selectMatchingOrFirstItem(ui->listCompartments, selection);
 }

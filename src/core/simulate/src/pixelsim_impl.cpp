@@ -90,6 +90,8 @@ SimCompartment::SimCompartment(const model::Model &doc,
   for (const auto &s : speciesIds) {
     const auto *field = doc.getSpecies().getField(s.c_str());
     double pixelWidth = comp->getPixelWidth();
+    SPDLOG_ERROR("{:x}", reinterpret_cast<std::size_t>(static_cast<const void*>(comp)));
+    SPDLOG_ERROR("d {}, a {}", field->getDiffusionConstant(), pixelWidth);
     diffConstants.push_back(field->getDiffusionConstant() / pixelWidth /
                             pixelWidth);
     // forwards euler stability bound: dt < a^2/4D
@@ -100,7 +102,7 @@ SimCompartment::SimCompartment(const model::Model &doc,
     if (!field->getIsSpatial()) {
       nonSpatialSpeciesIndices.push_back(fields.size() - 1);
     }
-    SPDLOG_DEBUG("  - adding species: {}, diff constant {}", s,
+    SPDLOG_INFO("  - adding species: {}, diff constant {}", s,
                  diffConstants.back());
   }
   // get reactions in compartment

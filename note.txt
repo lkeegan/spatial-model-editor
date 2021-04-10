@@ -1,0 +1,17 @@
+Last entry in table 3 of https://www.sciencedirect.com/science/article/abs/pii/0146664X82900570?via%3Dihub gives
+
+`L = 0.98 n + 0.426 m - 0.091 n_c`
+
+where
+- `n` is the number of steps between pixels
+- `m` is the number of these that are diagonal
+- `n_c` is the number of corners: the number of times the direction of the step changes
+
+One option would be to use this to calculate a single rescaling factor `L/M` for each membrane, where `M` is the number of pixel edges in the membrane, such that the effective total length of the membrane is approx correct.
+
+This is for 8-connected pixels, which is what our pixel contours are.
+
+However, our membrane is really the edges of thes pixels, not the centres, so we could instead use their 4-connected formula with the pixel corner contour:
+
+`L = 0.948 n - 0.278 n_c`
+We could also use a 4-connected formula with our pixel-corner contour instead

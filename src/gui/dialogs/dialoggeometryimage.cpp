@@ -79,8 +79,12 @@ DialogGeometryImage::~DialogGeometryImage() = default;
 
 double DialogGeometryImage::getPixelWidth() const { return pixelModelUnits; }
 
-bool DialogGeometryImage::imageAltered() const {
-  return alteredSize || alteredColours;
+bool DialogGeometryImage::imageSizeAltered() const {
+  return alteredSize;
+}
+
+bool DialogGeometryImage::imageColoursAltered() const {
+  return alteredColours;
 }
 
 const QImage &DialogGeometryImage::getAlteredImage() const {

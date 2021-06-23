@@ -17,7 +17,8 @@ public:
                            QWidget *parent = nullptr);
   ~DialogGeometryImage() override;
   [[nodiscard]] double getPixelWidth() const;
-  [[nodiscard]] bool imageAltered() const;
+  [[nodiscard]] bool imageSizeAltered() const;
+  [[nodiscard]] bool imageColoursAltered() const;
   [[nodiscard]] const QImage &getAlteredImage() const;
 
 private:
